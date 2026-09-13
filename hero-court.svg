@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#caa06a"/>
+      <stop offset="42%" stop-color="#bb8c58"/>
+      <stop offset="100%" stop-color="#8f6538"/>
+    </linearGradient>
+    <pattern id="planks" width="46" height="600" patternUnits="userSpaceOnUse">
+      <rect width="46" height="600" fill="transparent"/>
+      <line x1="0" y1="0" x2="0" y2="600" stroke="#3a220a" stroke-opacity="0.16" stroke-width="2"/>
+      <line x1="23" y1="0" x2="23" y2="600" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.12"/>
+    </linearGradient>
+    <radialGradient id="ballShade" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f6a24f"/>
+      <stop offset="55%" stop-color="#e2711d"/>
+      <stop offset="100%" stop-color="#a84e0e"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- wood floor -->
+  <rect width="1600" height="600" fill="url(#floor)"/>
+  <rect width="1600" height="600" fill="url(#planks)"/>
+  <rect width="1600" height="600" fill="url(#sheen)"/>
+
+  <!-- court markings: single soft three-point arc -->
+  <path d="M 880,600 A 460 460 0 0 1 1600,190" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.22"/>
+
+  <!-- backboard + hoop, faded into the background -->
+  <g opacity="0.32">
+    <rect x="1360" y="26" width="140" height="80" rx="4" fill="none" stroke="#eef3ff" stroke-width="4"/>
+    <rect x="1391" y="50" width="78" height="42" fill="none" stroke="#eef3ff" stroke-width="3"/>
+    <ellipse cx="1430" cy="112" rx="42" ry="11" fill="none" stroke="#f2822e" stroke-width="6"/>
+  </g>
+
+  <!-- basketball -->
+  <ellipse cx="1280" cy="486" rx="128" ry="28" fill="url(#shadow)"/>
+  <g transform="translate(1280,378)">
+    <circle r="100" fill="url(#ballShade)"/>
+    <circle r="100" fill="none" stroke="#7a3a12" stroke-width="5"/>
+    <ellipse cx="-32" cy="-38" rx="30" ry="18" fill="#ffffff" opacity="0.18"/>
+    <path d="M 0,-100 V 100" stroke="#7a3a12" stroke-width="5" fill="none"/>
+    <path d="M -100,0 H 100" stroke="#7a3a12" stroke-width="5" fill="none"/>
+    <path d="M 0,-100 C -74,-58 -74,58 0,100" stroke="#7a3a12" stroke-width="5" fill="none"/>
+    <path d="M 0,-100 C 74,-58 74,58 0,100" stroke="#7a3a12" stroke-width="5" fill="none"/>
+  </g>
+</svg>

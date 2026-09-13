@@ -1,0 +1,671 @@
+/* =========================================================
+   Basket Club Hoenheim — feuille de style
+   ========================================================= */
+
+:root {
+  --navy: #0b2247;
+  --navy-light: #123064;
+  --blue: #1d4ed8;
+  --blue-light: #3b6fe0;
+  --orange: #f2760c;
+  --orange-dark: #cf5f04;
+  --bg: #f5f7fb;
+  --bg-card: #ffffff;
+  --text: #1c2534;
+  --text-muted: #5b6577;
+  --border: #e1e6ef;
+  --radius: 12px;
+  --shadow: 0 4px 14px rgba(11, 34, 71, 0.08);
+  --shadow-hover: 0 10px 24px rgba(11, 34, 71, 0.14);
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+
+.eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.lead { color: var(--text-muted); font-size: 1.05rem; }
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--orange);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 200;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Top bar ---------- */
+.top-bar {
+  background: var(--navy);
+  color: #cfd9ef;
+  font-size: 0.85rem;
+}
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.top-bar a { color: #cfd9ef; }
+.top-bar-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.top-bar-links span, .top-bar-links a { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------- Header / nav ---------- */
+header.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(11,34,71,0.04);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--navy);
+}
+.brand:hover { text-decoration: none; }
+.brand-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  color: var(--navy);
+}
+.brand-name small {
+  display: block;
+  font-weight: 500;
+  font-size: 0.7rem;
+  color: var(--orange);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark .logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* nav */
+nav.main-nav { display: flex; }
+nav.main-nav > ul {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+nav.main-nav > ul > li { position: relative; }
+nav.main-nav a {
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: inline-block;
+}
+nav.main-nav a:hover, nav.main-nav a:focus,
+nav.main-nav li.current > a { background: var(--bg); text-decoration: none; color: var(--blue); }
+
+.has-sub > a::after { content: " ▾"; font-size: 0.7em; color: var(--text-muted); }
+.sub-menu {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: 0.15s ease;
+}
+.has-sub:hover .sub-menu,
+.has-sub:focus-within .sub-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.sub-menu a { display: block; padding: 9px 12px; font-weight: 500; }
+
+/* mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.btn:hover { text-decoration: none; }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary:hover { background: var(--orange-dark); }
+.btn-outline { background: transparent; border-color: #ffffff88; color: #fff; }
+.btn-outline:hover { background: rgba(255,255,255,0.12); }
+.btn-outline-navy { border-color: var(--navy); color: var(--navy); }
+.btn-outline-navy:hover { background: var(--navy); color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(100deg, rgba(7,19,46,0.90) 0%, rgba(11,34,71,0.82) 32%, rgba(20,55,120,0.45) 62%, rgba(29,78,216,0.12) 100%),
+    url('https://www.baskethoenheim.fr/wp-content/uploads/2022/07/HOENHEIM-2.png') center/cover no-repeat;
+  background-color: var(--navy);
+  color: #fff;
+  padding: 64px 0 56px;
+}
+.hero .container { display: grid; gap: 20px; }
+.hero h1 { color: #fff; }
+.hero p.lead { color: #e4e9f7; max-width: 640px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+
+.page-hero {
+  background:
+    linear-gradient(100deg, rgba(7,19,46,0.90) 0%, rgba(11,34,71,0.82) 32%, rgba(20,55,120,0.45) 62%, rgba(29,78,216,0.12) 100%),
+    url('https://www.baskethoenheim.fr/wp-content/uploads/2022/07/HOENHEIM-2.png') center/cover no-repeat;
+  background-color: var(--navy);
+  color: #fff;
+  padding: 46px 0;
+}
+.page-hero h1 { color: #fff; margin-bottom: 6px; }
+.page-hero p { color: #dbe4fb; margin: 0; }
+.breadcrumb { font-size: 0.85rem; color: #b9c6ea; margin-bottom: 10px; }
+.breadcrumb a { color: #dbe4fb; }
+
+/* ---------- Sections ---------- */
+section { padding: 56px 0; }
+section.alt { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-head { max-width: 640px; margin-bottom: 32px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ---------- Cards / grids ---------- */
+.grid { display: grid; gap: 22px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: 0.18s ease;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
+  overflow: hidden;
+}
+a.news-card:hover { text-decoration: none; }
+.news-card-photo {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+.news-card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+.news-date {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.news-card h3 { margin: 0; font-size: 1.05rem; }
+.news-card p { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
+.news-card .read-more { color: var(--blue); font-weight: 700; font-size: 0.88rem; margin-top: 2px; }
+
+/* ---------- Fil Facebook (actualités auto) ---------- */
+.fb-feed-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+}
+.fb-feed-wrap .fb-page, .fb-feed-wrap iframe { max-width: 100%; }
+
+/* ---------- Article (page d'actualité) ---------- */
+.article-cover {
+  max-width: var(--max);
+  margin: -28px auto 0;
+  padding: 0 24px;
+}
+.article-cover img {
+  width: 100%;
+  max-height: 640px;
+  object-fit: contain;
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--border);
+  display: block;
+}
+.article-body { max-width: 720px; margin: 0 auto; }
+.article-meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.article-back { display: inline-block; margin-top: 28px; font-weight: 600; }
+
+/* ---------- Page équipe (photo + effectif) ---------- */
+.team-photo-wrap { max-width: var(--max); margin: -28px auto 0; padding: 0 24px; }
+.team-photo-wrap img {
+  width: 100%;
+  max-height: 640px;
+  object-fit: contain;
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--border);
+  display: block;
+}
+.photo-placeholder {
+  width: 100%;
+  min-height: 320px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 24px;
+}
+.photo-placeholder .ph-icon { font-size: 2.4rem; }
+.photo-placeholder strong { color: var(--navy); font-size: 1rem; }
+
+.team-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0 32px; }
+
+.roster-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.roster-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.roster-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+@media (max-width: 560px) {
+  .team-info-grid { grid-template-columns: 1fr; }
+  .roster-list { grid-template-columns: 1fr; }
+}
+
+.team-card { text-align: center; }
+a.team-card { display: block; text-decoration: none; color: inherit; }
+a.team-card:hover { text-decoration: none; }
+.team-card .see-more { color: var(--blue); font-weight: 700; font-size: 0.85rem; display: inline-block; margin-top: 4px; }
+.team-badge {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin: 0 auto 14px; font-size: 0.95rem;
+}
+.team-card h3 { margin-bottom: 4px; }
+.team-card p { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+
+.info-card { border-left: 4px solid var(--orange); }
+.info-card h3 { display: flex; align-items: center; gap: 10px; }
+
+/* ---------- Quick links strip ---------- */
+.quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.quick-link {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+.quick-link:hover { text-decoration: none; box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.quick-link .icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--bg); display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; background: #fff; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+caption { text-align: left; font-weight: 700; padding: 16px 20px 4px; color: var(--navy); }
+th, td { padding: 13px 20px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+thead th { background: var(--navy); color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+tbody tr:hover { background: #eef3fc; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.planning-table td, .planning-table th { text-align: center; }
+.planning-table td.empty { color: var(--text-muted); }
+.cell-hand { background: #fff3e0; color: var(--orange-dark); font-weight: 600; border-radius: 6px; }
+
+/* ---------- Callout / CTA banner ---------- */
+.callout {
+  background: linear-gradient(120deg, var(--orange), var(--orange-dark));
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.callout h3 { color: #fff; margin-bottom: 4px; }
+.callout p { margin: 0; color: #fff0e2; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.contact-list li { display: flex; gap: 14px; align-items: flex-start; }
+.contact-list .icon {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--bg);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem;
+}
+.contact-list .icon svg { width: 18px; height: 18px; }
+form.contact-form { display: grid; gap: 14px; }
+form.contact-form label { font-weight: 600; font-size: 0.9rem; color: var(--navy); display: block; margin-bottom: 6px; }
+form.contact-form input, form.contact-form textarea {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px;
+  font-family: inherit; font-size: 0.95rem; background: #fff;
+}
+form.contact-form input:focus, form.contact-form textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+.form-alert { border-radius: 8px; padding: 12px 14px; font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+.form-alert-error { background: #fdecea; color: #b3261e; border: 1px solid #f5c2bd; }
+.map-embed { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.map-embed iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+/* ---------- Sponsors ---------- */
+.sponsor-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+.sponsor-logo {
+  position: relative;
+  flex: 0 0 auto;
+  height: 92px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: 0.18s ease;
+}
+.sponsor-logo:hover { opacity: 1; transform: translateY(-2px); }
+.sponsor-logo img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 220px;
+  object-fit: contain;
+}
+.sponsor-logo .sponsor-name {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 760px) {
+  .sponsor-strip { gap: 28px; }
+  .sponsor-logo { height: 68px; }
+  .sponsor-logo img { max-width: 160px; }
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer { background: var(--navy); color: #cfd9ef; padding: 48px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+.footer-grid h4 { color: #fff; font-size: 1rem; margin-bottom: 14px; }
+.footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.footer-grid a { color: #cfd9ef; }
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.footer-brand .brand-name, .footer-brand .brand-name small { color: #fff; }
+footer.site-footer p { color: #a9b6d6; font-size: 0.9rem; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #93a1c4;
+}
+.social-links { display: flex; gap: 10px; }
+.social-links a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.social-links a svg { width: 16px; height: 16px; }
+.social-links a:hover { background: var(--orange); text-decoration: none; }
+
+/* ---------- Planning ---------- */
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+.planning-day {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.planning-day h3 {
+  background: var(--blue);
+  color: #fff;
+  margin: 0;
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.planning-day .slots { padding: 10px; display: grid; gap: 8px; flex: 1; }
+.planning-slot {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+.planning-slot strong { display: block; color: var(--navy); font-size: 0.92rem; }
+.planning-slot span { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+.planning-slot.slot-hand {
+  background: #fff3e0;
+  opacity: 0.8;
+}
+.planning-slot.slot-hand strong { color: var(--orange-dark); }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 18px; font-size: 0.88rem; color: var(--text-muted); align-items: center; }
+.legend .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.dot-basket { background: var(--bg); border: 1px solid var(--border); }
+.dot-hand { background: #fff3e0; border: 1px solid #ffdca8; }
+
+@media (max-width: 900px) {
+  .planning-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .planning-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Anchors for club.html sections ---------- */
+.anchor-target { scroll-margin-top: 90px; }
+.jump-nav { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.jump-nav a {
+  background: #fff; border: 1px solid var(--border); border-radius: 999px;
+  padding: 8px 16px; font-weight: 600; font-size: 0.88rem; color: var(--navy);
+}
+.jump-nav a:hover { background: var(--bg); text-decoration: none; }
+.jump-nav a.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.jump-nav a.active:hover { background: var(--navy); }
+
+/* Onglets "Le club" : un seul panneau visible à la fois */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ---------- Utility ---------- */
+.mt-0 { margin-top: 0; }
+.text-center { text-align: center; }
+.badge {
+  display: inline-block; background: var(--bg); color: var(--navy);
+  border-radius: 999px; padding: 4px 12px; font-size: 0.78rem; font-weight: 700;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-flex; }
+  nav.main-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-hover);
+    display: none;
+    padding: 10px;
+  }
+  nav.main-nav.open { display: block; }
+  nav.main-nav > ul { flex-direction: column; align-items: stretch; gap: 2px; }
+  .sub-menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: none; display: none; padding-left: 12px;
+  }
+  .has-sub.open .sub-menu { display: block; }
+  .has-sub > a::after { float: right; }
+  .header-inner { flex-wrap: wrap; }
+  .quick-links { grid-template-columns: 1fr 1fr; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .callout { flex-direction: column; align-items: flex-start; }
+}
